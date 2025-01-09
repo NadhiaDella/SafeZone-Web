@@ -15,7 +15,7 @@
             <div class="card-body">
                 <div class="d-flex justify-content-between align-items-center">
                     <!-- Form Cari User -->
-                    <form action="/dashboard/manajemen-advokat" method="GET" class="d-flex mb-2 w-50">
+                    <form action="/dashboard/manajemen-konselor" method="GET" class="d-flex mb-2 w-50">
                         <input type="text" class="form-control mr-2" placeholder="Cari Konselor.." name="search">
                         <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
                     </form>

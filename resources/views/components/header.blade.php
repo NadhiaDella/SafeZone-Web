@@ -7,7 +7,7 @@
         <li class="link"><a href="/#pengaduan">Pengaduan</a></li>
         <li class="link"><a href="/#konseling">Konseling</a></li>
         <li class="link"><a href="/#hukum">Pendampingan Hukum</a></li>
-        <li class="link"><a href="/#informasi">Informasi</a></li>
+        {{-- <li class="link"><a href="/#informasi">Informasi</a></li> --}}
         <li class="link"><a href="/#kegiatan">Kegiatan</a></li><br>
         @if (Auth::check())
       <li class="link"><a href="{{ route('dashboard') }}">{{ Auth::user()->name }}</a>|<form id="logout-form"
@@ -64,7 +64,7 @@
       <a href="/#pengaduan">Pengaduan</a>
       <a href="/#konseling">Konseling</a>
       <a href="/#hukum">Pendampingan Hukum</a>
-      <a href="/#informasi">Informasi</a>
+      {{-- <a href="/#informasi">Informasi</a> --}}
       <a href="/#kegiatan">Kegiatan</a>
     </div>
   </div>

@@ -87,11 +87,21 @@ class UserController extends Controller
     //konselor
     public function indexKonselor(Request $request)
     {
-        $users = User::where('role_id', 3)->get();
+        $query = User::where('role_id', 3);
     
+        if ($request->has('search') && $request->search) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+    
+        $users = $query->get();
+
         return view('admin.manajemenKonselor.index', compact('users'));
     }
-
+    
     public function createKonselor()
     {
         return view('admin.manajemenKonselor.create');
@@ -186,8 +196,18 @@ class UserController extends Controller
     //advokat
     public function indexAdvokat(Request $request)
     {
-        $users = User::where('role_id', 4)->get();
+        $query = User::where('role_id', 4);
     
+        if ($request->has('search') && $request->search) {
+            $search = $request->search;
+            $query->where(function ($q) use ($search) {
+                $q->where('name', 'like', '%' . $search . '%')
+                ->orWhere('email', 'like', '%' . $search . '%');
+            });
+        }
+    
+        $users = $query->get();
+
         return view('admin.manajemenAdvokat.index', compact('users'));
     }
 
@@ -306,8 +326,5 @@ class UserController extends Controller
     
             }
         }
-
-
-
     }
 }

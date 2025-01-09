@@ -19,7 +19,7 @@
         <li class="footer__link"><a href="/#pengaduan">Pengaduan</a></li>
         <li class="footer__link"><a href="/#konseling">Konseling</a></li>
         <li class="footer__link"><a href="/#hukum">Pendampingan Hukum</a></li>
-        <li class="footer__link"><a href="/#informasi">Informasi</a></li>
+        {{-- <li class="footer__link"><a href="/#informasi">Informasi</a></li> --}}
         <li class="footer__link"><a href="/#kegiatan">Kegiatan</a></li>
       </ul>
     </div>
