@@ -18,7 +18,7 @@ class ViewController extends Controller
                 ->paginate(5);
         $doctors = User::where('status', 1)->where('role_id', 3)->with('doctor')->get();
         $advocats = User::where('status', 1)->where('role_id', 4)->with('advocat')->get();
-        return view('pages.index', compact('doctors','advocats', 'events'));
+        return view('Pages.index', compact('doctors','advocats', 'events'));
     }
 
     public function show_hukum($id)
