@@ -121,8 +121,10 @@
                             </div>
                         </div>
                         <div class="modal-footer">
+                            <a href="{{ route('modal.pdf', $form->id) }}" class="btn btn-primary" target="_blank">Print</a>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
+                        
                     </div>
                 </div>
             </div>

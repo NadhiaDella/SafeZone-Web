@@ -46,7 +46,7 @@
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->advocat->title }}</td>
                                 <td class="text-center">
-                                    <img class="w-75" src="{{ asset('gambar/' . $user->image) }}" alt="">
+                                    <img class="w-75" src="{{ asset('Gambar/' . $user->image) }}" alt="">
                                 </td>
                                 <td>{{ $user->email }}</td>
                                 <td class="text-center">{{ $user->role->name }}</td>

@@ -8,6 +8,7 @@ use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ViewController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
 
 
 /*
@@ -21,46 +22,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('Pages.index');
-});
+
+Route::get('/modal-pdf/{id}', [PDFController::class, 'generateModalPDF'])->name('modal.pdf');
+
+Route::get('/', [ViewController::class, 'index'])->name('index');
 
 Route::get('/informasi', function () {
     return view('Pages.informasi');
 });
-
-//manajemen agenda kegiatan
-Route::get('/dashboard/event-kegiatan', [KegiatanController::class,'index'])->name('agenda.kegiatan.index');
-Route::get('/dashboard/event-kegiatan/create', [KegiatanController::class,'create'])->name('agenda.kegiatan.create');
-Route::get('/dashboard/event-kegiatan/edit/{id}', [KegiatanController::class,'edit'])->name('agenda.kegiatan.edit');
-Route::put('/dashboard/event-kegiatan/edit/update/{id}', [KegiatanController::class,'update'])->name('agenda.kegiatan.update');
-Route::post('/dashboard/event-kegiatan/create/store', [KegiatanController::class,'store'])->name('agenda.kegiatan.store');
-Route::delete('/dashboard/event-kegiatan/destroy/{id}', [KegiatanController::class, 'destroy'])->name('agenda.kegiatan.destroy');
-
-//manajemen konselor
-Route::get('/dashboard/manajemen-konselor', [UserController::class,'indexKonselor'])->name('manajemen.konselor.index');
-Route::get('/dashboard/manajemen-konselor/create', [UserController::class,'createKonselor'])->name('manajemen.konselor.create');
-Route::get('/dashboard/manajemen-konselor/edit/{id}', [UserController::class,'editKonselor'])->name('manajemen.konselor.edit');
-Route::put('/dashboard/manajemen-konselor/edit/update/{id}', [UserController::class,'updateKonselor'])->name('manajemen.konselor.update');
-Route::post('/dashboard/manajemen-konselor/create/store', [UserController::class,'storeKonselor'])->name('manajemen.konselor.store');
-Route::delete('/dashboard/manajemen-konselor/destroy/{id}', [UserController::class, 'destroyKonselor'])->name('manajemen.konselor.destroy');
-
-//manajemen advokat
-Route::get('/dashboard/manajemen-advokat', [UserController::class,'indexAdvokat'])->name('manajemen.advokat.index');
-Route::get('/dashboard/manajemen-advokat/create', [UserController::class,'createAdvokat'])->name('manajemen.advokat.create');
-Route::get('/dashboard/manajemen-advokat/edit/{id}', [UserController::class,'editAdvokat'])->name('manajemen.advokat.edit');
-Route::put('/dashboard/manajemen-advokat/edit/update/{id}', [UserController::class,'updateAdvokat'])->name('manajemen.advokat.update');
-Route::post('/dashboard/manajemen-advokat/create/store', [UserController::class,'storeAdvokat'])->name('manajemen.advokat.store');
-Route::delete('/dashboard/manajemen-advokat/destroy/{id}', [UserController::class, 'destroyAdvokat'])->name('manajemen.advokat.destroy');
-
-// Merubah active checkbox
-Route::put('/dashboard/manajemen/status/{id}', [UserController::class, 'activeStatus'])->name('activeStatus');
-
-// Route Form
-Route::get('/form', [FormController::class, 'form'])->name('pages.form');
-Route::get('/form/pengajuan-hukum', [FormController::class, 'form2'])->name('pengajuan-hukum');
-Route::get('/form/konseling', [FormController::class, 'form2'])->name('konseling');
-Route::get('/', [ViewController::class, 'index'])->name('index');
 
 
 Route::middleware(['guest'])->group(function () {
@@ -93,5 +62,37 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/report/delete{id}', [FormController::class, 'destroy'])->name('report.destroy');
     Route::get('/form/pengajuan-hukum/{id}', [ViewController::class, 'show_hukum'])->name('show.hukum');
     Route::get('/form/pengajuan-konseling/{id}', [ViewController::class, 'show_konsel'])->name('show.konsel');
+
+    //manajemen agenda kegiatan
+    Route::get('/dashboard/event-kegiatan', [KegiatanController::class,'index'])->name('agenda.kegiatan.index');
+    Route::get('/dashboard/event-kegiatan/create', [KegiatanController::class,'create'])->name('agenda.kegiatan.create');
+    Route::get('/dashboard/event-kegiatan/edit/{id}', [KegiatanController::class,'edit'])->name('agenda.kegiatan.edit');
+    Route::put('/dashboard/event-kegiatan/edit/update/{id}', [KegiatanController::class,'update'])->name('agenda.kegiatan.update');
+    Route::post('/dashboard/event-kegiatan/create/store', [KegiatanController::class,'store'])->name('agenda.kegiatan.store');
+    Route::delete('/dashboard/event-kegiatan/destroy/{id}', [KegiatanController::class, 'destroy'])->name('agenda.kegiatan.destroy');
+
+    //manajemen konselor
+    Route::get('/dashboard/manajemen-konselor', [UserController::class,'indexKonselor'])->name('manajemen.konselor.index');
+    Route::get('/dashboard/manajemen-konselor/create', [UserController::class,'createKonselor'])->name('manajemen.konselor.create');
+    Route::get('/dashboard/manajemen-konselor/edit/{id}', [UserController::class,'editKonselor'])->name('manajemen.konselor.edit');
+    Route::put('/dashboard/manajemen-konselor/edit/update/{id}', [UserController::class,'updateKonselor'])->name('manajemen.konselor.update');
+    Route::post('/dashboard/manajemen-konselor/create/store', [UserController::class,'storeKonselor'])->name('manajemen.konselor.store');
+    Route::delete('/dashboard/manajemen-konselor/destroy/{id}', [UserController::class, 'destroyKonselor'])->name('manajemen.konselor.destroy');
+
+    //manajemen advokat
+    Route::get('/dashboard/manajemen-advokat', [UserController::class,'indexAdvokat'])->name('manajemen.advokat.index');
+    Route::get('/dashboard/manajemen-advokat/create', [UserController::class,'createAdvokat'])->name('manajemen.advokat.create');
+    Route::get('/dashboard/manajemen-advokat/edit/{id}', [UserController::class,'editAdvokat'])->name('manajemen.advokat.edit');
+    Route::put('/dashboard/manajemen-advokat/edit/update/{id}', [UserController::class,'updateAdvokat'])->name('manajemen.advokat.update');
+    Route::post('/dashboard/manajemen-advokat/create/store', [UserController::class,'storeAdvokat'])->name('manajemen.advokat.store');
+    Route::delete('/dashboard/manajemen-advokat/destroy/{id}', [UserController::class, 'destroyAdvokat'])->name('manajemen.advokat.destroy');
+
+    // Merubah active checkbox
+    Route::put('/dashboard/manajemen/status/{id}', [UserController::class, 'activeStatus'])->name('activeStatus');
+
+    // Route Form
+    Route::get('/form', [FormController::class, 'form'])->name('pages.form');
+    Route::get('/form/pengajuan-hukum', [FormController::class, 'form2'])->name('pengajuan-hukum');
+    Route::get('/form/konseling', [FormController::class, 'form2'])->name('konseling');
 
 });

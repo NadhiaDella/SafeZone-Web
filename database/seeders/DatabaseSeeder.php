@@ -262,6 +262,37 @@ class DatabaseSeeder extends Seeder
             ],
         ];
         DB::table('advocats')->insert($advocats);
+        
+        $forms = [
+            [
+                'user_id' => 2,
+                'form_type_id' => 1,
+                'nama_korban' => 'Della',
+                'bertindak_sebagai' => 'Korban',
+                'tgl_lapor' => '2025-01-09',
+                'no_telp' => '089612759802',
+                'no_telp_lain' => '089612759802',
+                'domisili' => 'Surabaya',
+                'jenis_kekerasan_seksual' => 'Bullying',
+                'cerita_singkat_peristiwa' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique expedita aperiam totam aspernatur eos accusantium.',
+                'is_disabilitas' => false,
+                'desc_disabilitas' => null,
+                'nama_pelaku' => 'Bintang',
+            ],
+        ];
+        DB::table('forms')->insert($forms);
+        
+        $complainers = [
+            'form_id' => 1,
+            'reasonComplainer_id' => 1
+        ];
+        DB::table('form_reason_complainers')->insert($complainers);
+        
+        $needs = [
+            'form_id' => 1,
+            'whatuneed_id' => 1
+        ];
+        DB::table('form_what_u_needs')->insert($needs);
 
     }
 }
