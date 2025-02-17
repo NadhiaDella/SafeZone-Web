@@ -20,9 +20,9 @@
                         <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
                     </form>
                     <!-- Tombol Tambah User -->
-                    <a href="{{ route('manajemen.user.create') }}" class="btn btn-primary mb-2">
+                    {{-- <a href="{{ route('manajemen.user.create') }}" class="btn btn-primary mb-2">
                         Tambah User
-                    </a>
+                    </a> --}}
                 </div>        
                 <div class="table-responsive">
                     <table class="table table-bordered align-middle">
