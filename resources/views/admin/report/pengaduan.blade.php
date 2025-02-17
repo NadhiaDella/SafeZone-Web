@@ -46,7 +46,7 @@
                             <div class="text-nowrap d-inline-flex align-items-center">
                                 <button type="button" class="btn btn-secondary btn-sm mr-1" data-toggle="modal"
                                     data-target="#exampleModal{{$form->id}}"><i class="bi bi-eye"></i></button>
-                                <a href= "{{ route('report.edit-pengaduan')}}" class="btn btn-success btn-sm mr-1"><i class="bi bi-pencil-square"></i></a>
+                                {{-- <a href= "{{ route('report.edit-pengaduan')}}" class="btn btn-success btn-sm mr-1"><i class="bi bi-pencil-square"></i></a> --}}
                                 <form action="{{ route('report.destroy', $form->id) }}" method="post" onsubmit="return confirm('Yakin Mau Hapus ?');">
                                     @csrf
                                     @method('DELETE')
