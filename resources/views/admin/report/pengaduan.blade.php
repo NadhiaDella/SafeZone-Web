@@ -172,7 +172,7 @@
                             <div class="text-nowrap d-inline-flex align-items-center">
                                 <button type="button" class="btn btn-secondary btn-sm mr-1" data-toggle="modal"
                                     data-target="#exampleModal{{$form->id}}">Etc</button>
-                                <button type="button" class="btn btn-success btn-sm mr-1">Edit</button>
+                                {{-- <button type="button" class="btn btn-success btn-sm mr-1">Edit</button> --}}
                                 <form action="{{ route('report.destroy', $form->id) }}" method="post" onsubmit="return confirm('Yakin Mau Hapus ?');">
                                     @csrf
                                     @method('DELETE')
